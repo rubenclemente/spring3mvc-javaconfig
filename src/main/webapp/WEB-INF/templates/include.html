@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+	<title>Include</title>
+</head>
+
+<body>
+	
+	<div th:fragment="logo" class="logo">
+		<h2 class="muted" th:text="#{app.name}">App name</h2>
+		<h4 class="muted" th:text="#{app.description}">App description</h4>
+		<hr/>
+	</div>
+	
+
+	<div th:fragment="menu" class="masthead">
+
+		<div class="pull-left">
+			<h2 class="muted" th:text="#{app.name}">App name</h2>
+			<h4 class="muted" th:text="#{app.description}">App description</h4>
+		</div>
+
+		<div class="pull-right">
+			<ul class="nav nav-pills pull-left">
+				<li><a href="#" th:href="@{/home}" th:text="#{menu.options.home}">Home</a></li>
+				<li><a href="#" th:href="@{/users}" th:text="#{menu.options.users}">Manage Users</a></li>
+			</ul>
+
+			<ul class="nav nav-pills pill-logout pull-right">
+				<li><a href="#" th:href="@{/logout}">Logout</a></li>
+			</ul>
+		</div>
+		
+		<div class="clearfix"></div>
+
+		<p class="pull-right">Logged in as <strong><span class="authname" th:text="${authname}">user</span></strong></p>
+
+		<hr/>
+	</div>
+
+
+	<!-- If we use 'include' the first 'div' of the fragment is lost -->
+	<!-- If we use 'substituteby' the first 'div' of the fragment remains -->
+	<div th:fragment="footer" class="footer">
+		<hr/>
+
+		<div class="pull-left">
+			© <span th:text="#{app.name}">App name 2013 </span><span> by </span>
+			<a th:href="#{app.url}">https://github.com/rubenclemente</a>
+		</div>
+		<div class="pull-right">
+			Made with <a target="_blank" href="http://getbootstrap.com">Bootstrap</a>.
+		</div>
+	</div>
+
+</body>
+</html>

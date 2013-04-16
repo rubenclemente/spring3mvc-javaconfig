@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+	<title th:text="#{home.title}">Title</title>
+	<link rel="stylesheet" href="../../resources/bootstrap/css/bootstrap.css" th:href="@{/resources/bootstrap/css/bootstrap.css}"/>
+	<link rel="stylesheet" href="../../resources/css/styles.css" th:href="@{/resources/css/styles.css}"/>
+
+	<style type="text/css">
+	body {
+		padding-top: 20px;
+		padding-bottom: 40px;
+	}
+	</style>
+</head>
+
+<body>
+	<div class="container-narrow">
+
+		<div th:substituteby="include :: menu"></div>
+
+		<div class="home">
+			<h1><span th:text="#{home.title}">Welcome!</span>!</h1>
+			
+			<p><strong><span class="authname" th:text="${authname}">user</span></strong> to <span th:text="#{app.name}">App name</span></p>
+		</div>
+		
+		<div th:include="include :: footer" class="footer"></div>
+	</div>
+
+	<script src="../../resources/jquery/js/jquery-1.9.0.js" th:src="@{/resources/jquery/js/jquery-1.9.0.js}"/>
+	<script src="../../resources/js/custom.js" th:src="@{/resources/js/custom.js}"/>
+
+</body>
+</html>

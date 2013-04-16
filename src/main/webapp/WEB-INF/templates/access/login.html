@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+	<title th:text="#{login.title}">Sign in</title>
+	<link rel="stylesheet" href="../../../resources/bootstrap/css/bootstrap.css" th:href="@{/resources/bootstrap/css/bootstrap.css}"/>
+	<link rel="stylesheet" href="../../../resources/css/styles.css" th:href="@{/resources/css/styles.css}"/>
+
+	<style type="text/css">
+	body {
+		padding-top: 40px;
+		padding-bottom: 40px;
+		background-color: #f5f5f5;
+	}
+	</style>
+</head>
+
+<body>
+	<div class="container">
+
+		<form class="form-signin" action="#" th:action="@{/j_spring_security_check}" method="post">
+
+			<h2 class="form-signin-heading">Please sign in</h2>
+
+			<fieldset>
+				<input id="j_username" name="j_username" type="text" class="input-block-level" th:placeholder="#{login.username}"/>
+				<input id="j_password" name="j_password" type="password" class="input-block-level" th:placeholder="#{login.password}"/>
+				<label class="checkbox">
+					<input id="_spring_security_remember_me" type="checkbox" value="remember-me">Remember me</input>
+				</label>
+
+				<button class="btn btn-large btn-block btn-primary" type="submit" th:text="#{login.button}">Sign in</button>
+			</fieldset>
+
+			<p>
+				<a href="#" th:href="@{/signup}" th:text="#{login.noaccount}">No account? Create one now!</a>
+			</p>
+		</form>
+
+		<p class="status" th:if="${not #strings.isEmpty(status)}" th:text="#{'status.' + ${status}}">Status</p>
+	</div>
+
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <title th:text="#{signup.title}">Sign up</title>
+  <link rel="stylesheet" href="../../../resources/bootstrap/css/bootstrap.css" th:href="@{/resources/bootstrap/css/bootstrap.css}"/>
+  <link rel="stylesheet" href="../../../resources/css/styles.css" th:href="@{/resources/css/styles.css}"/>
+
+  <style type="text/css">
+  body {
+    padding-top: 40px;
+    padding-bottom: 40px;
+    background-color: #f5f5f5;
+  }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+
+    <form class="form-signin" action="#" th:action="@{/signup}" method="post">
+
+      <h2 class="form-signin-heading">Sign up</h2>
+
+      <fieldset>
+        <input id="firstName" name="firstName" class="input-block-level" maxlength="50" type="text" th:placeholder="#{user.firstname.label}"/>
+        <input id="lastName" name="lastName" class="input-block-level" maxlength="50" type="text" th:placeholder="#{user.lastname.label}"/>
+        <input id="username" name="username" class="input-block-level" maxlength="50" type="text" th:placeholder="#{user.username.label}"/>
+
+        <label for="password">Password</label>
+        <input id="password" name="password" class="input-block-level" maxlength="50" type="password" />
+        <label for="repassword">Retype password</label>
+        <input id="repassword" name="repassword" class="input-block-level" maxlength="50" type="password" />
+
+        <button class="btn btn-large btn-block btn-primary" type="submit" th:text="#{signup.button}">Sign up</button>
+      </fieldset>
+      <p>
+        <a href="#" th:href="@{/login}" th:text="#{signup.hasaccount}">Already have an account? Sign in!</a>
+      </p>
+    </form>
+
+    <p class="status" th:if="${not #strings.isEmpty(status)}" th:text="#{'status.' + ${status}}">Status</p>
+  </div>
+
+</body>
+</html>

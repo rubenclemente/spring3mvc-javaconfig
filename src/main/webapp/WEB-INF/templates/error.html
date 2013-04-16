@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+	<title>Error</title>
+	<link rel="stylesheet" href="../../resources/bootstrap/css/bootstrap.css" th:href="@{/resources/bootstrap/css/bootstrap.css}"/>
+	<link rel="stylesheet" href="../../resources/css/styles.css" th:href="@{/resources/css/styles.css}"/>
+
+	<style type="text/css">
+	body {
+		padding-top: 20px;
+		padding-bottom: 40px;
+	}
+	</style>
+</head>
+
+<body>
+	<div class="container-narrow">
+		
+		<div th:substituteby="include :: menu"></div>
+
+		<div>
+			<h3 class="error" th:text="#{'error.' + ${error}}">Error message</h3>
+			<p th:text="${description}">Error description</p>
+		</div>
+
+		<div th:include="include :: footer" class="footer"></div>
+	</div>
+</body>
+</html>

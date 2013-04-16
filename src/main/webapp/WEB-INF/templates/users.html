@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+	<title th:text="#{users.title}">Title</title>
+	<link rel="stylesheet" href="../../resources/bootstrap/css/bootstrap.css" th:href="@{/resources/bootstrap/css/bootstrap.css}"/>
+	<link rel="stylesheet" href="../../resources/css/styles.css" th:href="@{/resources/css/styles.css}"/>
+
+	<style type="text/css">
+	body {
+		padding-top: 20px;
+		padding-bottom: 40px;
+	}
+	</style>
+</head>
+
+<body>
+	<div class="container-narrow">
+		
+		<div th:substituteby="include :: menu"></div>
+
+		<div>
+			<table class="table table-bordered table-hover table-condensed">
+				<caption th:text="#{users.table.caption}">Site Users</caption>
+				<thead>
+					<tr>
+						<th scope="col" th:text="#{user.id.label}">Idv</th>
+						<th scope="col" th:text="#{user.firstname.label}">First Name</th>
+						<th scope="col" th:text="#{user.lastname.label}">Last Name</th>
+						<th scope="col" th:text="#{user.username.label}">Username</th>
+						<th scope="col" th:text="#{user.role.label}">Role</th>
+						<th scope="col" th:text="#{user.options.label}">Options</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="u : ${users}">
+						<td th:text="${u.id}">1</td>
+						<td th:text="${u.firstName}">FirsName1</td>
+						<td th:text="${u.lastName}">LastName1</td>
+						<td th:text="${u.username}">username1</td>
+						<td th:text="#{${'user.role.' + u.role}}">admin</td>
+						<td>
+							<a class="btn btn-mini btn-info" href="#" th:href="@{/users/edit(id=${u.id})}">edit</a>
+							<a class="btn btn-mini btn-danger" href="#" th:href="@{/users/delete(id=${u.id})}">delete</a> 
+						</td>
+					</tr>
+				</tbody>
+			</table>
+
+			<br/><br/>
+
+			<form action="#" th:action="@{/users/create}" th:object="${commanduser}" method="post">
+				
+				<input type="hidden" th:field="*{id}"/>
+
+				<div class="row-fluid">
+					<div class="span4">
+						<label for="firstname" th:text="#{user.firstname.label}">First Name</label>
+						<input type="text" th:field="*{firstName}"/>
+
+						<label for="lastName" th:text="#{user.lastname.label}">Last Name</label>
+						<input type="text" th:field="*{lastName}"/>
+					</div>
+
+					<div class="span4">
+						<label for="username" th:text="#{user.username.label}">Username</label>
+						<input type="text" th:field="*{username}"/>
+
+						<label for="password" th:text="#{user.password.label}">Password</label>
+						<input type="text" th:field="*{password}"/>
+					</div>
+
+					<div class="span4">
+						<label for="role" th:text="#{user.role.label}">Role</label>
+						<select th:field="*{role}">
+							<option th:each="role : ${allRoles}" th:value="${role}"
+							th:text="#{${'user.role.' + role}}">Access Type 1</option>
+							<option th:remove="all" value="2">Access Type 2</option>
+						</select>
+						<label for="nothing" ></label>
+						<button class="add-button" type="submit" th:text="#{${usertype + '.user.button.label'}}">Action</button>
+					</div>
+				</div>
+
+			</form>
+		</div>
+
+		<div th:include="include :: footer" class="footer"></div>
+	</div>
+
+	<!--
+	<script src="../../resources/bootstrap/js/bootstrap.js" th:src="@{/resources/bootstrap/js/bootstrap.js}"/>
+	-->
+	<script src="../../resources/jquery/js/jquery-1.9.0.js" th:src="@{/resources/jquery/js/jquery-1.9.0.js}"/>
+	<script src="../../resources/js/custom.js" th:src="@{/resources/js/custom.js}"/>
+	
+</body>
+</html>
