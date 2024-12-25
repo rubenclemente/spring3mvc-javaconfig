@@ -2,8 +2,11 @@
 
 Maven application: Spring 3 MVC using JavaConfig for the app configuration.
 
+## Status: Complete - Work OK
+
 ## Components
 
+- Maven 2 or 3
 - Spring MVC v3.2.0
 - Spring Security v3.1.3
 - Thymeleaf v2.0.14
@@ -28,3 +31,7 @@ Maven application: Spring 3 MVC using JavaConfig for the app configuration.
 ## Running
 
 $ mvn jetty:run -Djetty.port=8800
+
+## Accesing the application
+
+http://localhost:8800/spring3mvc-javaconfig
